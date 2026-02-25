@@ -22,7 +22,7 @@ export default function CartItem({ item }) {
       <div className="item-details">
         <h3>{item.name}</h3>
         <p className="item-category">{item.category}</p>
-        <p className="item-price">${item.price.toFixed(2)}</p>
+        <p className="item-price">₹{item.price}</p>
       </div>
 
       <div className="item-quantity">
@@ -35,7 +35,7 @@ export default function CartItem({ item }) {
       </div>
 
       <div className="item-total">
-        <p>${(item.price * item.quantity).toFixed(2)}</p>
+        <p>₹{item.price * item.quantity}</p>
       </div>
 
       <button onClick={handleRemove} className="remove-btn">
