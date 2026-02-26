@@ -17,22 +17,22 @@ import oliveImg from '../assets/images/products/olive.jpg';
 
 export const mockProducts = [
   // Vegetables
-  { id: 1, name: 'Organic Tomatoes', category: 'vegetables', price: 335, image: tomatoImg, description: 'Fresh organic tomatoes', stock: 50 },
-  { id: 2, name: 'Carrots', category: 'vegetables', price: 209, image: carrotImg, description: 'Crunchy organic carrots', stock: 60 },
-  { id: 3, name: 'Spinach Bundle', category: 'vegetables', price: 419, image: spinachImg, description: 'Fresh organic spinach', stock: 40 },
-  { id: 4, name: 'Bell Peppers', category: 'vegetables', price: 503, image: pepperImg, description: 'Colorful organic peppers', stock: 35 },
+  { id: 1, name: 'Organic Tomatoes', category: 'vegetables', price: 45, image: tomatoImg, description: 'Fresh organic tomatoes', stock: 50 },
+  { id: 2, name: 'Carrots', category: 'vegetables', price: 35, image: carrotImg, description: 'Crunchy organic carrots', stock: 60 },
+  { id: 3, name: 'Spinach Bundle', category: 'vegetables', price: 25, image: spinachImg, description: 'Fresh organic spinach', stock: 40 },
+  { id: 4, name: 'Bell Peppers', category: 'vegetables', price: 70, image: pepperImg, description: 'Colorful organic peppers', stock: 35 },
 
   // Fruits
-  { id: 5, name: 'Organic Apples', category: 'fruits', price: 419, image: appleImg, description: 'Sweet organic apples', stock: 80 },
-  { id: 6, name: 'Bananas', category: 'fruits', price: 251, image: bananaImg, description: 'Fresh yellow bananas', stock: 100 },
-  { id: 7, name: 'Organic Berries Mix', category: 'fruits', price: 671, image: berriesImg, description: 'Mixed organic berries', stock: 30 },
-  { id: 8, name: 'Oranges', category: 'fruits', price: 293, image: orangesImg, description: 'Juicy organic oranges', stock: 70 },
+  { id: 5, name: 'Organic Apples', category: 'fruits', price: 110, image: appleImg, description: 'Sweet organic apples', stock: 80 },
+  { id: 6, name: 'Bananas', category: 'fruits', price: 45, image: bananaImg, description: 'Fresh yellow bananas', stock: 100 },
+  { id: 7, name: 'Organic Berries Mix', category: 'fruits', price: 180, image: berriesImg, description: 'Mixed organic berries', stock: 30 },
+  { id: 8, name: 'Oranges', category: 'fruits', price: 70, image: orangesImg, description: 'Juicy organic oranges', stock: 70 },
 
   // Staples
-  { id: 9, name: 'Organic Rice', category: 'staples', price: 587, image: riceImg, description: '1kg organic rice sack', stock: 120 },
-  { id: 10, name: 'Whole Wheat Flour', category: 'staples', price: 461, image: wheatImg, description: '1kg organic flour', stock: 90 },
-  { id: 11, name: 'Organic Lentils', category: 'staples', price: 419, image: lentilsImg, description: '500g organic lentils', stock: 60 },
-  { id: 12, name: 'Olive Oil', category: 'staples', price: 1091, image: oliveImg, description: '500ml extra virgin olive oil', stock: 45 },
+  { id: 9, name: 'Organic Rice', category: 'staples', price: 90, image: riceImg, description: '1kg organic rice sack', stock: 120 },
+  { id: 10, name: 'Whole Wheat Flour', category: 'staples', price: 55, image: wheatImg, description: '1kg organic flour', stock: 90 },
+  { id: 11, name: 'Organic Lentils', category: 'staples', price: 70, image: lentilsImg, description: '500g organic lentils', stock: 60 },
+  { id: 12, name: 'Olive Oil', category: 'staples', price: 320, image: oliveImg, description: '500ml extra virgin olive oil', stock: 45 },
 ];
 
 export const mockCategories = [
@@ -48,9 +48,9 @@ export const mockUsers = [
 ];
 
 export const mockOrders = [
-  { id: 1, userId: 3, products: [{ id: 1, quantity: 2 }], total: 670, date: '2025-02-15', status: 'completed' },
-  { id: 2, userId: 3, products: [{ id: 5, quantity: 1 }, { id: 6, quantity: 2 }], total: 921, date: '2025-02-18', status: 'pending' },
-  { id: 3, userId: 3, products: [{ id: 9, quantity: 1 }], total: 587, date: '2025-02-20', status: 'completed' },
+  { id: 1, userId: 3, products: [{ id: 1, quantity: 2 }], total: 90, date: '2025-02-15', status: 'completed' },
+  { id: 2, userId: 3, products: [{ id: 5, quantity: 1 }, { id: 6, quantity: 2 }], total: 200, date: '2025-02-18', status: 'pending' },
+  { id: 3, userId: 3, products: [{ id: 9, quantity: 1 }], total: 90, date: '2025-02-20', status: 'completed' },
 ];
 
 export const productService = {

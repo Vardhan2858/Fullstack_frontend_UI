@@ -47,7 +47,7 @@ export default function AdminDashboard() {
           </div>
           <div className="stat-card">
             <div className="stat-label">💰 Revenue</div>
-            <div className="stat-value">₹12,450</div>
+            <div className="stat-value">₹380</div>
           </div>
         </div>
       </div>
