@@ -40,7 +40,7 @@ export default function CustomerDashboard() {
           </div>
           <div className="stat-card">
             <div className="stat-label">💰 Total Spent</div>
-            <div className="stat-value">${stats.spent.toFixed(2)}</div>
+            <div className="stat-value">₹{stats.spent.toFixed(2)}</div>
           </div>
           <div className="stat-card">
             <div className="stat-label">📦 Items Bought</div>

@@ -31,11 +31,11 @@ export default function CategoryPage() {
   return (
     <div className="page-container">
       <div className="container">
-        <Link to="/shop" style={{ color: '#27ae60', marginBottom: '2rem', display: 'block' }}>
+        <Link to="/shop" style={{ color: '#d4af37', marginBottom: '2rem', display: 'block' }}>
           ← Back to Shop
         </Link>
 
-        <h1 style={{ color: '#2c3e50', marginBottom: '2rem' }}>{categoryName}</h1>
+        <h1 style={{ color: '#d4af37', marginBottom: '2rem' }}>{categoryName}</h1>
 
         {products.length > 0 ? (
           <div className="products-grid">

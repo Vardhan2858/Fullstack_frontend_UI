@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="page-container">
       <div className="container">
-        <h1 style={{ color: '#2c3e50', marginTop: '2rem', marginBottom: '2rem' }}>About OrganicSiri</h1>
+        <h1 style={{ color: '#d4af37', marginTop: '1rem', marginBottom: '1rem' }}>About OrganicSiri</h1>
 
         <div style={{ background: 'white', padding: '2rem', borderRadius: '8px', marginBottom: '2rem', lineHeight: '1.8', color: '#555' }}>
           <h2 style={{ color: '#27ae60' }}>Our Mission</h2>

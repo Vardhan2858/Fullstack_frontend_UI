@@ -1,24 +1,34 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../store/CartProvider';
+import { useAuth } from '../../store/AuthProvider';
 import CartItem from '../../components/ui/CartItem';
 import '../pages.css';
 
 export default function Cart() {
   const { cart, getCartTotal, clearCart } = useCart();
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
     if (cart.length === 0) {
       alert('Your cart is empty!');
       return;
     }
-    alert('Thank you for your order! Total: $' + getCartTotal().toFixed(2));
+
+    if (!isLoggedIn) {
+      alert('Please login to proceed with checkout');
+      navigate('/login');
+      return;
+    }
+
+    alert('Thank you for your order! Total: ₹' + getCartTotal().toFixed(2));
     clearCart();
   };
 
   return (
     <div className="page-container">
       <div className="container">
-        <h1 style={{ color: '#2c3e50', marginBottom: '2rem' }}>Shopping Cart</h1>
+        <h1 style={{ color: '#d4af37', marginBottom: '2rem' }}>Shopping Cart</h1>
 
         {cart.length > 0 ? (
           <div className="cart-container">
@@ -33,26 +43,41 @@ export default function Cart() {
 
               <div className="summary-row">
                 <span>Subtotal</span>
-                <span>${getCartTotal().toFixed(2)}</span>
+                <span>₹{getCartTotal().toFixed(2)}</span>
               </div>
 
               <div className="summary-row">
                 <span>Shipping</span>
-                <span>$5.00</span>
+                <span>₹5.00</span>
               </div>
 
               <div className="summary-row">
                 <span>Tax</span>
-                <span>${(getCartTotal() * 0.1).toFixed(2)}</span>
+                <span>₹{(getCartTotal() * 0.1).toFixed(2)}</span>
               </div>
 
               <div className="summary-row total">
                 <span>Total</span>
-                <span>${(getCartTotal() + 5 + getCartTotal() * 0.1).toFixed(2)}</span>
+                <span>₹{(getCartTotal() + 5 + getCartTotal() * 0.1).toFixed(2)}</span>
               </div>
 
+              {!isLoggedIn && (
+                <div style={{ 
+                  background: 'linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%)', 
+                  padding: '1rem', 
+                  borderRadius: '4px', 
+                  marginBottom: '1rem',
+                  border: '1px solid #ffc107',
+                  textAlign: 'center'
+                }}>
+                  <p style={{ margin: '0', color: '#f4c430', fontSize: '0.9rem', fontWeight: '600' }}>
+                    Please <Link to="/login" style={{ color: '#27ae60', textDecoration: 'underline' }}>login</Link> to proceed with checkout
+                  </p>
+                </div>
+              )}
+
               <button onClick={handleCheckout} className="checkout-btn">
-                Proceed to Checkout
+                {isLoggedIn ? 'Proceed to Checkout' : 'Login to Checkout'}
               </button>
 
               <Link to="/shop" className="checkout-btn" style={{ background: '#95a5a6', marginTop: '0.5rem', textAlign: 'center', textDecoration: 'none', display: 'block' }}>

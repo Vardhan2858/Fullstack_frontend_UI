@@ -69,7 +69,7 @@ export default function AddProduct() {
               name="price"
               value={formData.price}
               onChange={handleChange}
-              placeholder="$0.00"
+              placeholder="₹0.00"
               step="0.01"
               required
             />

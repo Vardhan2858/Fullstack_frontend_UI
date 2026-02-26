@@ -84,10 +84,6 @@ export default function LoginForm() {
       <button type="submit" disabled={loading} className="submit-btn">
         {loading ? 'Logging in...' : 'Login'}
       </button>
-
-      <p className="auth-link">
-        Don't have an account? <a href="/register">Register here</a>
-      </p>
     </form>
   );
 }

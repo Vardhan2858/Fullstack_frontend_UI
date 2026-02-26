@@ -38,7 +38,7 @@ export default function Shop() {
   return (
     <div className="page-container">
       <div className="container">
-        <h1 style={{ color: '#2c3e50', marginBottom: '2rem' }}>Shop All Products</h1>
+        <h1 style={{ color: '#d4af37', marginBottom: '1rem',marginTop: '1rem',  }}>Shop All Products</h1>
 
         {/* Filter Section */}
         <div className="filter-section">

@@ -1,6 +1,45 @@
 // Mock Authentication Service
 // Replace with actual API calls when backend is ready
 
+// Demo accounts (hardcoded)
+const DEMO_ACCOUNTS = [
+  {
+    email: 'admin@organic.com',
+    password: 'password123',
+    id: 'demo-admin-001',
+    name: 'Admin User',
+    role: 'admin',
+    image: 'https://i.pravatar.cc/150?img=12'
+  },
+  {
+    email: 'farmer@organic.com',
+    password: 'password123',
+    id: 'demo-farmer-001',
+    name: 'Farmer User',
+    role: 'farmer',
+    image: 'https://i.pravatar.cc/150?img=33'
+  },
+  {
+    email: 'customer@organic.com',
+    password: 'password123',
+    id: 'demo-customer-001',
+    name: 'Customer User',
+    role: 'customer',
+    image: 'https://i.pravatar.cc/150?img=45'
+  }
+];
+
+// Helper function to get registered users from localStorage
+const getRegisteredUsers = () => {
+  const users = localStorage.getItem('registeredUsers');
+  return users ? JSON.parse(users) : [];
+};
+
+// Helper function to save registered users to localStorage
+const saveRegisteredUsers = (users) => {
+  localStorage.setItem('registeredUsers', JSON.stringify(users));
+};
+
 export const authService = {
   login: async (email, password) => {
     // Mock validation
@@ -8,21 +47,33 @@ export const authService = {
       throw new Error('Email and password are required');
     }
 
-    // Determine user role based on email pattern (mock logic)
-    let role = 'customer';
-    if (email.includes('admin')) role = 'admin';
-    if (email.includes('farmer')) role = 'farmer';
+    // Check if it's a demo account
+    const demoAccount = DEMO_ACCOUNTS.find(
+      account => account.email === email && account.password === password
+    );
 
-    const mockUser = {
-      id: Math.random().toString(36).substr(2, 9),
-      name: email.split('@')[0],
-      email,
-      role,
-      image: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`,
-    };
+    if (demoAccount) {
+      // Return demo user without password
+      const { password: _, ...userWithoutPassword } = demoAccount;
+      localStorage.setItem('authToken', 'demo-token-' + Date.now());
+      return userWithoutPassword;
+    }
 
-    localStorage.setItem('authToken', 'mock-token-' + Date.now());
-    return mockUser;
+    // Check if it's a registered user
+    const registeredUsers = getRegisteredUsers();
+    const registeredUser = registeredUsers.find(
+      user => user.email === email && user.password === password
+    );
+
+    if (registeredUser) {
+      // Return registered user without password
+      const { password: _, ...userWithoutPassword } = registeredUser;
+      localStorage.setItem('authToken', 'registered-token-' + Date.now());
+      return userWithoutPassword;
+    }
+
+    // If not demo or registered, reject login
+    throw new Error('Invalid email or password. Please register first or use a demo account.');
   },
 
   register: async (userData) => {
@@ -40,16 +91,38 @@ export const authService = {
       throw new Error('Password must be at least 6 characters');
     }
 
-    const mockUser = {
-      id: Math.random().toString(36).substr(2, 9),
+    // Check if email is already a demo account
+    const isDemoAccount = DEMO_ACCOUNTS.some(account => account.email === email);
+    if (isDemoAccount) {
+      throw new Error('This email is reserved for demo accounts. Please use a different email.');
+    }
+
+    // Check if email is already registered
+    const registeredUsers = getRegisteredUsers();
+    const emailExists = registeredUsers.some(user => user.email === email);
+    if (emailExists) {
+      throw new Error('Email is already registered. Please login instead.');
+    }
+
+    // Create new user
+    const newUser = {
+      id: 'user-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
       name,
       email,
+      password, // In production, this should be hashed
       role: role || 'customer',
       image: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`,
+      registeredAt: new Date().toISOString()
     };
 
-    localStorage.setItem('authToken', 'mock-token-' + Date.now());
-    return mockUser;
+    // Save to registered users
+    registeredUsers.push(newUser);
+    saveRegisteredUsers(registeredUsers);
+
+    // Return user without password
+    const { password: _, ...userWithoutPassword } = newUser;
+    localStorage.setItem('authToken', 'registered-token-' + Date.now());
+    return userWithoutPassword;
   },
 
   logout: async () => {

@@ -43,7 +43,7 @@ export default function MyOrders() {
                   <td>#{order.id}</td>
                   <td>{new Date(order.date).toLocaleDateString()}</td>
                   <td>{order.products.length}</td>
-                  <td>${order.total.toFixed(2)}</td>
+                  <td>₹{order.total.toFixed(2)}</td>
                   <td>
                     <span className={`status-badge status-${order.status}`}>
                       {order.status}

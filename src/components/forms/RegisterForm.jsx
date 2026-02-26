@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../store/AuthProvider';
 import { authService } from '../../services/authService';
 import './AuthForm.css';
 
@@ -14,7 +13,6 @@ export default function RegisterForm() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,17 +26,11 @@ export default function RegisterForm() {
     setLoading(true);
 
     try {
-      const user = await authService.register(formData);
-      register(user);
-
-      // Redirect based on role
-      const dashboardRoutes = {
-        admin: '/admin/dashboard',
-        farmer: '/farmer/dashboard',
-        customer: '/customer/dashboard',
-      };
-
-      navigate(dashboardRoutes[user.role] || '/');
+      await authService.register(formData);
+      
+      // Show success message and redirect to login
+      alert('Registration successful! Please login with your credentials.');
+      navigate('/login');
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again.');
     } finally {
@@ -125,10 +117,6 @@ export default function RegisterForm() {
       <button type="submit" disabled={loading} className="submit-btn">
         {loading ? 'Creating Account...' : 'Register'}
       </button>
-
-      <p className="auth-link">
-        Already have an account? <a href="/login">Login here</a>
-      </p>
     </form>
   );
 }

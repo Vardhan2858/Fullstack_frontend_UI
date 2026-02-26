@@ -35,7 +35,7 @@ export default function Blog() {
   return (
     <div className="page-container">
       <div className="container">
-        <h1 style={{ color: '#2c3e50', marginTop: '2rem', marginBottom: '2rem' }}>OrganicSiri Blog</h1>
+        <h1 style={{ color: '#d4af37', marginTop: '1rem', marginBottom: '1rem' }}>OrganicSiri Blog</h1>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
           {blogPosts.map(post => (

@@ -41,7 +41,7 @@ export default function OrdersOverview() {
                 <tr key={order.id}>
                   <td>#{order.id}</td>
                   <td>#{order.userId}</td>
-                  <td>${order.total.toFixed(2)}</td>
+                  <td>₹{order.total.toFixed(2)}</td>
                   <td>{new Date(order.date).toLocaleDateString()}</td>
                   <td>
                     <span className={`status-badge status-${order.status}`}>

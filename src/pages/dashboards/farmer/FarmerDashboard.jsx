@@ -42,7 +42,7 @@ export default function FarmerDashboard() {
           </div>
           <div className="stat-card">
             <div className="stat-label">💰 Total Revenue</div>
-            <div className="stat-value">${stats.revenue.toFixed(2)}</div>
+            <div className="stat-value">₹{stats.revenue.toFixed(2)}</div>
           </div>
           <div className="stat-card">
             <div className="stat-label">⭐ Rating</div>

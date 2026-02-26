@@ -15,8 +15,7 @@ import About from './pages/public/About';
 import Blog from './pages/public/Blog';
 
 // Auth Pages
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
+import AuthPage from './pages/auth/AuthPage';
 
 // Admin Dashboards
 import AdminDashboard from './pages/dashboards/admin/AdminDashboard';
@@ -54,8 +53,8 @@ function App() {
             <Route path="/blog" element={<Blog />} />
 
             {/* Auth Routes */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<AuthPage />} />
+            <Route path="/register" element={<AuthPage />} />
 
             {/* Admin Routes */}
             <Route

@@ -47,7 +47,7 @@ export default function MyProducts() {
                 <tr key={product.id}>
                   <td>{product.name}</td>
                   <td>{product.category}</td>
-                  <td>${product.price.toFixed(2)}</td>
+                  <td>₹{product.price.toFixed(2)}</td>
                   <td>{product.stock}</td>
                   <td>
                     <button style={{ padding: '0.5rem 1rem', background: '#3498db', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '0.5rem' }}>

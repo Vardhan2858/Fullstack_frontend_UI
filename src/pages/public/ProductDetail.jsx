@@ -37,7 +37,7 @@ export default function ProductDetail() {
   return (
     <div className="page-container">
       <div className="container">
-        <Link to="/shop" style={{ color: '#27ae60', marginBottom: '2rem', display: 'block' }}>
+        <Link to="/shop" style={{ color: '#d4af37', marginBottom: '2rem', display: 'block' }}>
           ← Back to Shop
         </Link>
 
@@ -54,7 +54,7 @@ export default function ProductDetail() {
 
               <p className="detail-description">{product.description}</p>
 
-              <p style={{ color: '#7f8c8d' }}>
+              <p style={{ color: '#d4d4d4' }}>
                 <strong>Stock Available:</strong> {product.stock} items
               </p>
 
