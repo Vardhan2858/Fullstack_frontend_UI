@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #2a3542 0%, #3d4f5e 25%, #1e3a1e 50%, #3d4f5e 75%, #2a3542 100%);
   background-attachment: fixed;
+  margin-top: 70px;
 }
 
 .sidebar {
@@ -11,9 +12,10 @@
   color: white;
   padding: 2rem 0;
   position: fixed;
-  height: 100vh;
+  height: calc(100vh - 70px);
   left: 0;
-  top: 0;
+  top: 70px;
+  z-index: 999;
   box-shadow: 4px 0 20px rgba(212, 175, 55, 0.3);
   overflow-y: auto;
   border-right: 2px solid #d4af37;

@@ -21,7 +21,8 @@ export default function Cart() {
       return;
     }
 
-    alert('Thank you for your order! Total: ₹' + getCartTotal().toFixed(2));
+    const total = getCartTotal() + 5 + getCartTotal() * 0.1;
+    alert('Thank you for your order! Total: ₹' + total.toFixed(2));
     clearCart();
   };
 

@@ -29,10 +29,12 @@ export function AuthProvider({ children }) {
   }, []);
 
   const updateProfile = useCallback((updatedData) => {
-    const newUser = { ...user, ...updatedData };
-    setUser(newUser);
-    localStorage.setItem('user', JSON.stringify(newUser));
-  }, [user]);
+    setUser(prevUser => {
+      const newUser = { ...prevUser, ...updatedData };
+      localStorage.setItem('user', JSON.stringify(newUser));
+      return newUser;
+    });
+  }, []);
 
   useEffect(() => {
     // Restore user from localStorage on mount
@@ -45,7 +47,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoggedIn, login, logout, register, updateProfile, loading }}>
+    <AuthContext.Provider value={{ user, isLoggedIn, login, logout, register, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );
